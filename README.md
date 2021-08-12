@@ -1,7 +1,7 @@
 ![motion logo](img/motion_logo.png)
 
 Sample project for a sotial media platform created at [`propulsion academy`](https://propulsion.academy/remote/full-stack) bootcamp.
-![propulsion logo](img/propulsion_logo.png)
+![propulsion logo](img/propulsion_logo.PNG)
 
 This project was created in two different teams and reworked after the bootcamp by me.
 
