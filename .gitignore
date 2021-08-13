@@ -14,8 +14,6 @@ media-files/
 **/migrations/*
 # re-including __init__.py files in migrations folders
 !**/migrations/__init__.py
-# exclude settings.py because of private key
-settings.py
 
 ### postgres data ###
 postgres-data/
@@ -32,9 +30,6 @@ frontend/coverage
 
 # production
 frontend/build
-
-# exclude .env bacause of mail login
-env
 
 package-lock.json
 yarn.lock

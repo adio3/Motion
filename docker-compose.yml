@@ -1,45 +1,75 @@
 version: '3'
 
 services:
-  backend:
-    image: motion_ref:latest
-    ports:
-      - 8000:8000
-    env_file:
-      - ./env/dev.env
-    volumes:
-      - static-files:/static-files
-      - media-files:/media-files
-      - frontend:/frontend/build
-    command: "sh /scripts/dev.sh"
-    depends_on:
-      - postgres
-
-
   postgres:
     image: postgres:latest
     ports:
-      - 5433:5432
+      - '5432:5432'
     env_file:
       - ./env/dev.env
     volumes:
-#    - ./postgres_volume:/var/lib/postgresql/data
-    - ./postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
 
-  nginx:
-    image: nginx:latest
+  backend:
+    image: motion:latest
+    env_file:
+      - ./env/dev.env
+    command: "sh /scripts/dev.sh"
     ports:
-      - 80:80
-      - 443:443
+      - '8000:8000'
+    depends_on:
+      - postgres
     volumes:
-      - ./nginx/def.conf:/etc/nginx/conf.d/default.conf
+      - ./backend:/backend
       - static-files:/static-files
       - media-files:/media-files
-#      - /etc/letsencrypt:/etc/letsencrypt
-      - frontend:/frontend
 
 volumes:
-  postgres_volume:
+  postgres-data:
   static-files:
   media-files:
-  frontend:
+
+# version: '3'
+
+# services:
+#   backend:
+#     image: motion:latest
+#     ports:
+#       - 8000:8000
+#     env_file:
+#       - ./env/dev.env
+#     volumes:
+#       - static-files:/static-files
+#       - media-files:/media-files
+#       - frontend:/frontend/build
+#     command: "sh /scripts/dev.sh"
+#     depends_on:
+#       - postgres
+
+#   postgres:
+#     image: postgres:latest
+#     ports:
+#       - 5433:5432
+#     env_file:
+#       - ./env/dev.env
+#     volumes:
+# #    - ./postgres_volume:/var/lib/postgresql/data
+#     - ./postgres-data:/var/lib/postgresql/data
+
+#   nginx:
+#     image: nginx:latest
+#     ports:
+#       - 80:80
+#       - 443:443
+#     volumes:
+#       - ./nginx/def.conf:/etc/nginx/conf.d/default.conf
+#       - static-files:/static-files
+#       - media-files:/media-files
+# #      - /etc/letsencrypt:/etc/letsencrypt
+#       - frontend:/frontend
+
+# volumes:
+#   postgres-data:
+#   static-files:
+#   media-files:
+#   frontend:

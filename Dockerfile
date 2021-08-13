@@ -13,7 +13,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -
 # creating a folder on the root level
 RUN mkdir -p /backend
 RUN mkdir -p /frontend
-RUN mkdir -p /frontend_tmp
 RUN mkdir -p /scripts
 RUN mkdir -p /static-files
 
@@ -30,10 +29,11 @@ COPY ./backend/ /backend
 COPY ./scripts /scripts
 RUN chmod +x /scripts*
 
-WORKDIR /frontend_tmp
-COPY ./frontend/package.json /frontend_tmp/
-RUN npm install
-COPY ./frontend /frontend_tmp
-RUN npm run build
+# WORKDIR /frontend
+# COPY ./frontend/package.json /frontend/
+# RUN npm install --global yarn
+# RUN yarn install
+# COPY ./frontend /frontend
+# RUN yarn run build
 
 WORKDIR /backend

@@ -1,4 +1,4 @@
-name: backend_motion_ref
+name: backend_motion
 dependencies:
   - python=3.9
   - pip=21.1

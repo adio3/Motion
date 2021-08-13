@@ -1,4 +1,4 @@
-rm -rf /frontend/build/* && cp -r /frontend_tmp/build/* /frontend/build
+rm -rf /frontend/build/* && cp -r /frontend/build/* /frontend/build
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --no-input
