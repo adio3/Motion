@@ -14,6 +14,9 @@ media-files/
 **/migrations/*
 # re-including __init__.py files in migrations folders
 !**/migrations/__init__.py
+# ignore because of secretkey
+settings.py
+/env
 
 ### postgres data ###
 postgres-data/
